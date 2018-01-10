@@ -70,3 +70,6 @@ gem 'rails_12factor', group: :production
 
 # SENTRy
 gem "sentry-raven"
+
+#gem 'google-cloud'
+gem 'google-cloud-storage'
