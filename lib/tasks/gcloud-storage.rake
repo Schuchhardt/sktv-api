@@ -1,20 +1,31 @@
-# rake gcloud:storage
+# rake storage:sync_events
 require "google/cloud/storage"
 
-namespace :gcloud do
+namespace :storage do
   desc "Test google storage"
-  task :storage => :environment do
-	storage = Google::Cloud::Storage.new(
-	  project_id: "sktv-189602",
-	  credentials: "#{Rails.root}/config/sktv-sa.json"
-	)
-	bucket = storage.bucket "sktv"
-	#eventos = bucket.files prefix: "Eventos/"
+  task :sync_events => :environment do
 
-	#puts eventos.all(request_limit: 5).inspect
-	file = bucket.file "Eventos/BestrickTourLife20Park/1.jpg"
-	file.acl.public!
-	public_url = file.public_url
-	puts public_url.inspect
+  	BASE_URL="https://storage.googleapis.com/sktv/Eventos/"
+	
+	storage = Google::Cloud::Storage.new(
+		project_id: ENV["GCLOUD_PROJECT_ID"],
+		credentials: "#{Rails.root}/config/#{ENV['GCLOUD_CREDENTIAL_FILE']}"
+	)
+	bucket = storage.bucket ENV["GCLOUD_BUCKET"]
+
+
+	Event.all.each do |event|
+		if event.code_name
+			
+			event_files = bucket.files prefix: "Eventos/#{event.code_name}"
+		
+			event_files.all.each do |file|
+				file.acl.public!
+				puts file.name
+				Photo.create(photo_url: "#{BASE_URL}#{event.code_name}/#{file.name}", event_id: event.id)
+			end
+		end
+	end
   end
 end
+

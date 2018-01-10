@@ -1,13 +1,21 @@
+require "google/cloud/storage"
 class Event < ActiveRecord::Base
+	has_many :photos, :inverse_of => :event
 
 	BASE_URL="https://storage.googleapis.com/sktv/Eventos/"
 
 	def cover_url
-		self.image_url ? "#{BASE_URL}#{self.code_name}/#{self.image_url}" : 'https://i.imgur.com/hXPwgqu.jpg'
+		gen_gcloud_url self.code_name, self.image_url
 	end
 
 	def all_photos
-		[]
+		self.photos.map { |p| p.slice(:id, :photo_url) }
+	end
+
+	private
+
+	def gen_gcloud_url code_name, image_url
+		code_name && image_url ? "#{BASE_URL}#{code_name}/#{image_url}" : 'https://i.imgur.com/hXPwgqu.jpg'
 	end
 
 
@@ -32,6 +40,14 @@ class Event < ActiveRecord::Base
 
 		configure :map_url do
 			label "Link Mapa"
+		end
+
+		configure :photos do
+			hide
+		end
+
+		configure :release_date do
+			label "Fecha de la Galeria"
 		end
 
 		configure :code_name do
