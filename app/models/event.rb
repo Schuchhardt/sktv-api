@@ -6,12 +6,16 @@ class Event < ActiveRecord::Base
 		self.image_url ? "#{BASE_URL}#{self.code_name}/#{self.image_url}" : 'https://i.imgur.com/hXPwgqu.jpg'
 	end
 
+	def all_photos
+		[]
+	end
+
 
 	# RAILS ADMIN
 	rails_admin do
 		weight 1
-		label "Evento"
-		label_plural "Eventos"
+		label "Galeria"
+		label_plural "Galerias"
 		
 		configure :name do
 			label "Nombre"
@@ -36,6 +40,7 @@ class Event < ActiveRecord::Base
 
 		configure :image_url do
 			label "Foto Portada"
+			help "Nombre archivo foto"
 		end
 		
 		list do
