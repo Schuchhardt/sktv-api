@@ -8,7 +8,7 @@ namespace :storage do
   	base_url = "https://storage.googleapis.com/sktv/"
 	storage = Google::Cloud::Storage.new(
 		project_id: ENV["GCLOUD_PROJECT_ID"],
-		credentials: StringIO.new(ENV["GCLOUD_APPLICATION_CREDENTIALS"])
+		credentials: JSON.parse(ENV["GCLOUD_APPLICATION_CREDENTIALS"])
 	)
 	bucket = storage.bucket ENV["GCLOUD_BUCKET"]
 
