@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   namespace :api do
     get 'events' => '/event#list'
     get 'events/:event_id' => '/event#detail'
+    get 'feed' => '/news#feed'
   end
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
