@@ -6,8 +6,6 @@ namespace :storage do
   task :sync_events => :environment do
 
   	base_url = "https://storage.googleapis.com/sktv/"
-  	puts "***"
-	puts ENV['GCLOUD_APPLICATION_CREDENTIALS'].inspect
 	storage = Google::Cloud::Storage.new(
 		project_id: ENV["GCLOUD_PROJECT_ID"],
 		credentials: StringIO.new(ENV["GCLOUD_APPLICATION_CREDENTIALS"])

@@ -4,7 +4,7 @@ class Event < ActiveRecord::Base
 	has_many :photos, :inverse_of => :event
 	after_create :load_photos
 
-	BASE_URL="https://storage.googleapis.com/sktv/"
+	BASE_URL = "https://storage.googleapis.com/sktv/"
 
 	def cover_url
 		gen_gcloud_url self.code_name, self.image_url
@@ -31,7 +31,6 @@ class Event < ActiveRecord::Base
 		
 			event_files.all.each do |file|
 				file.acl.public!
-				puts file.name
 				Photo.create(photo_url: "#{BASE_URL}#{file.name}", event_id: self.id)
 			end
 		end
