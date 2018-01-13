@@ -43,7 +43,7 @@ class Event < ActiveRecord::Base
 
 	# RAILS ADMIN
 	rails_admin do
-		weight 1
+		weight 2
 		label "Galeria"
 		label_plural "Galerias"
 		

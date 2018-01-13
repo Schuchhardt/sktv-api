@@ -16,6 +16,9 @@ Rails.application.routes.draw do
     get 'feed' => '/posts#feed'
     get 'recent_news' => '/posts#recent'
     get 'news' => '/posts#list'
+    get 'posts/:post_id' => '/posts#detail'
+    get 'posts' => '/posts#list'
+    get 'agents' => '/agents#list'
   end
 
   # Example of named route that can be invoked with purchase_url(id: product.id)

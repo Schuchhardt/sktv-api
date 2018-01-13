@@ -1,9 +1,9 @@
 class PostsController < ApplicationController
 
 	def list
-		filtered_news = Post.order(release_date: 'DESC')
-							.map { |e| e.slice(:id, :title, :subtitle, :image_url, :created_at, :description, :text1, :text2) }
-		render json: {news: filtered_news}		
+		all_posts = Post.order(release_date: 'DESC')
+							.map { |e| e.slice(:id, :title, :subtitle, :image_url, :created_at, :text, :second_text) }
+		render json: {posts: all_posts}		
 	end
 
 	def recent
@@ -28,6 +28,12 @@ class PostsController < ApplicationController
 			}	
 		end
 		render json: {instagram_feed: instagram_feed }
+	end
+
+	def detail
+		post = Post.find params[:post_id]
+		rp = Post.where.not(id: params[:post_id]).limit(3)
+		render json: {post: post.slice(:id, :title, :subtitle, :text, :second_text, :image_url, :created_at ), related_posts: rp }
 	end
 
 end
