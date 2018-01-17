@@ -1,7 +1,7 @@
 require "google/cloud/storage"
 
 class Event < ActiveRecord::Base
-	has_many :photos, :inverse_of => :event
+	has_many :photos, :inverse_of => :event, dependent: :delete_all
 	after_create :load_photos
 
 	BASE_URL = "https://storage.googleapis.com/sktv/"
