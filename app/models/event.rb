@@ -68,8 +68,9 @@ class Event < ActiveRecord::Base
 			hide
 		end
 
-		configure :release_date do
+		configure :release_date, :date do
 			label "Fecha de la Galeria"
+			strftime_format "%d-%m-%Y"
 		end
 
 		configure :code_name do
