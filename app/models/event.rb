@@ -11,7 +11,7 @@ class Event < ActiveRecord::Base
 	end
 
 	def all_photos
-		self.photos.map { |p| p.slice(:id, :photo_url) }
+		self.photos.order(:filename).map { |p| p.slice(:id, :photo_url) }
 	end
 
 	private
@@ -31,7 +31,7 @@ class Event < ActiveRecord::Base
 		
 			event_files.all.each do |file|
 				file.acl.public!
-				Photo.create(photo_url: "#{BASE_URL}#{file.name}", event_id: self.id)
+				Photo.create(photo_url: "#{BASE_URL}#{file.name}", event_id: self.id, filename: file.name, order: file.name.to_i)
 			end
 		end
 	end

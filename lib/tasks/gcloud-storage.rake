@@ -21,7 +21,7 @@ namespace :storage do
 			event_files.all.each do |file|
 				file.acl.public!
 				puts file.name
-				Photo.create(photo_url: "#{base_url}#{file.name}", event_id: event.id)
+				Photo.create(photo_url: "#{base_url}#{file.name}", event_id: event.id, filename: file.name, order: file.name.to_i)
 			end
 		end
 	end
