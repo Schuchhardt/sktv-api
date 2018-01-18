@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   namespace :api do
     get 'events' => '/event#list'
     get 'events/:event_id' => '/event#detail'
+    get 'events/:event_id/photos' => '/event#photos'
     get 'feed' => '/posts#feed'
     get 'recent_news' => '/posts#recent'
     get 'news' => '/posts#list'

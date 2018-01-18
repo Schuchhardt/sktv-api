@@ -7,7 +7,7 @@ class PostsController < ApplicationController
 	end
 
 	def recent
-		featured = Post.where(featured: true).first
+		featured = Post.order(release_date: 'DESC').where(featured: true).first
 		filtered_news = Post.where("featured IS NOT true").order(release_date: 'DESC').limit(9)
 							.map { |e| e.slice(:id, :title, :subtitle, :image_url, :created_at) }
 		instagram_feed = InstagramApi.user(ENV['INSTAGRAM_USER_ID']).recent_media.data.first.link.gsub('https://www.instagram.com/p/', '')
