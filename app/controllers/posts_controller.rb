@@ -33,7 +33,7 @@ class PostsController < ApplicationController
 	def detail
 		post = Post.find params[:post_id]
 		rp = Post.where.not(id: params[:post_id]).limit(3)
-		render json: {post: post.slice(:id, :title, :subtitle, :text, :second_text, :image_url, :created_at ), related_posts: rp }
+		render json: {post: post.slice(:id, :title, :subtitle, :text, :second_text, :image_url, :created_at, :photos, :place , :youtube_iframe_url), related_posts: rp }
 	end
 
 end

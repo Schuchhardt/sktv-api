@@ -11,7 +11,7 @@ class Event < ActiveRecord::Base
 	end
 
 	def all_photos
-		self.photos.order(:filename).map { |p| p.slice(:id, :photo_url) }
+		self.photos.order(:order).map { |p| p.slice(:id, :photo_url) }
 	end
 
 	private

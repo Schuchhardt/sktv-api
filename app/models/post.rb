@@ -1,4 +1,9 @@
 class Post < ActiveRecord::Base
+	has_many :photos, :inverse_of => :post, dependent: :delete_all
+
+	def youtube_iframe_url
+		self.youtube_url.present? ? "https://www.youtube.com/embed/#{self.youtube_url}?rel=0" : false
+	end
 
 	# RAILS ADMIN
 	rails_admin do
