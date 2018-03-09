@@ -20,6 +20,8 @@ Rails.application.routes.draw do
     get 'posts/:post_id' => '/posts#detail'
     get 'posts' => '/posts#list'
     get 'agents' => '/agents#list'
+    get 'agents/:agent_type' => '/agents#list_type'
+    get 'agents/:agent_type/:agent_id' => '/agents#detail'
   end
 
   # Example of named route that can be invoked with purchase_url(id: product.id)

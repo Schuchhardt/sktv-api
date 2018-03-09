@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180117214012) do
+ActiveRecord::Schema.define(version: 20180309135307) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,8 +24,14 @@ ActiveRecord::Schema.define(version: 20180117214012) do
     t.string   "webpage"
     t.string   "instagram"
     t.string   "photo_url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "facebook"
+    t.string   "youtube"
+    t.string   "quote"
+    t.string   "text"
+    t.string   "featured_image"
+    t.string   "agent_type"
   end
 
   create_table "events", force: :cascade do |t|
@@ -61,6 +67,7 @@ ActiveRecord::Schema.define(version: 20180117214012) do
     t.integer  "order"
     t.integer  "post_id"
     t.string   "caption"
+    t.integer  "agent_id"
   end
 
   create_table "posts", force: :cascade do |t|
