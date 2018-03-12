@@ -2,6 +2,7 @@ class Photo < ActiveRecord::Base
 	belongs_to :event, :inverse_of => :photos
 	belongs_to :post, :inverse_of => :photos
 	belongs_to :agent, :inverse_of => :photos
+	belongs_to :spot, :inverse_of => :photos
 	
 	# RAILS ADMIN
 	rails_admin do
@@ -35,6 +36,10 @@ class Photo < ActiveRecord::Base
 		end
 
 		configure :agent do
+			hide
+		end
+
+		configure :spot do
 			hide
 		end
 	end

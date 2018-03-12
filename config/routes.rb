@@ -22,6 +22,10 @@ Rails.application.routes.draw do
     get 'agents' => '/agents#list'
     get 'agents/:agent_type' => '/agents#list_type'
     get 'agents/:agent_type/:agent_id' => '/agents#detail'
+    get 'skateparks-list/:region_id' => '/skateparks#list'
+    get 'skateparks/:skatepark_id' => '/skateparks#detail'
+    
+    
   end
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
