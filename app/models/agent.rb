@@ -20,10 +20,6 @@ class Agent < ActiveRecord::Base
 			label "Fono"
 		end
 
-		configure :phone do
-			label "Fono"
-		end
-
 		configure :photo_url do
 			required true
 			label "Link de Imagen de Perfil"
@@ -33,8 +29,12 @@ class Agent < ActiveRecord::Base
 			label "Frase"
 		end
 
-		configure :text do
+		configure :text, :text do
 			label "Texto"
+		end
+
+		configure :aditional_text, :text do
+			label "Texto adicional"
 		end
 
 		configure :featured_image do

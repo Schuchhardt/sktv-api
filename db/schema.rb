@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180309135307) do
+ActiveRecord::Schema.define(version: 20180312032625) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20180309135307) do
     t.string   "text"
     t.string   "featured_image"
     t.string   "agent_type"
+    t.string   "aditional_text"
   end
 
   create_table "events", force: :cascade do |t|
