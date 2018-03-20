@@ -10,7 +10,13 @@ class PostsController < ApplicationController
 		featured = Post.order(release_date: 'DESC').where(featured: true).first
 		filtered_news = Post.where("featured IS NOT true").order(release_date: 'DESC').limit(9)
 							.map { |e| e.slice(:id, :title, :subtitle, :image_url, :created_at) }
-		instagram_feed = InstagramApi.user(ENV['INSTAGRAM_USER_ID']).recent_media.data.first.link.gsub('https://www.instagram.com/p/', '')
+		begin
+			instagram_feed = InstagramApi.user(ENV['INSTAGRAM_USER_ID']).recent_media.data.first.link.gsub('https://www.instagram.com/p/', '')
+		rescue Exception => e
+			puts e.inspect
+			puts e.backtrace
+			instagram_feed = []
+		end
 		render json: {recent_news: filtered_news, featured: featured, instagram_feed: instagram_feed }
 	end
 

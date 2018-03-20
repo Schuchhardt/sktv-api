@@ -35,6 +35,12 @@ class Spot < ActiveRecord::Base
 			label "Dirección"
 		end
 
+		configure :flaitometro, :enum do 
+			enum do
+			    { '*': 1, '**': 2, '***': 3, '****': 4, '*****': 5 }
+			end
+		end
+
 		configure :region, :enum do 
 			required true
 			label "Region"
