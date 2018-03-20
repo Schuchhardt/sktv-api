@@ -15,7 +15,7 @@ class PostsController < ApplicationController
 		rescue Exception => e
 			puts e.inspect
 			puts e.backtrace
-			instagram_feed = []
+			instagram_feed = false
 		end
 		render json: {recent_news: filtered_news, featured: featured, instagram_feed: instagram_feed }
 	end
