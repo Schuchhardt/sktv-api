@@ -18,7 +18,7 @@ Para ello debemos instalar ruby, postgres, crear las bases de datos, y cargar la
 	curl -sSL https://get.rvm.io | bash -s stable --ruby
 	rvm install ruby-2.3.1
 	gem install bundler
-	rvm use ruby-2.3.1@orange --create
+	rvm use ruby-2.3.1@sktv --create
 
 ### Instalación de Gemfile
 	bundle install
@@ -39,5 +39,5 @@ Para ello debemos instalar ruby, postgres, crear las bases de datos, y cargar la
 
 
 ## Desarrollador
-* Sebastián Schuchhardt ([schgressive@gmail.com](mailto: schgressive@gmail.com))
+* Sebastián Schuchhardt [schgressive@gmail.com](mailto: schgressive@gmail.com)
 
