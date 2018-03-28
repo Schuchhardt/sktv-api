@@ -1,6 +1,16 @@
 class Spot < ActiveRecord::Base
+	include PgSearch
 	has_many :photos, :inverse_of => :agent, dependent: :delete_all
-	
+	multisearchable against: %i(name location city region)
+
+	def title
+		self.name
+	end
+
+	def img
+		self.image_url
+	end
+
 	# RAILS ADMIN
 	rails_admin do
 		weight 5

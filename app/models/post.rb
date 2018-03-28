@@ -1,5 +1,12 @@
 class Post < ActiveRecord::Base
+	include PgSearch
 	has_many :photos, :inverse_of => :post, dependent: :delete_all
+	
+	multisearchable against: %i(title subtitle intro text second_text place)
+
+	def img
+		self.image_url
+	end
 
 	def youtube_iframe_url
 		self.youtube_url.present? ? "https://www.youtube.com/embed/#{self.youtube_url}?rel=0" : false
@@ -51,6 +58,11 @@ class Post < ActiveRecord::Base
 			help "Poner link completo - imgur.com"
 		end
 
+		configure :youtube_url do
+			label "ID youtube"
+			help "Poner SOLO el id - (ej: si es https://youtu.be/20vRkFCgjsY poner solo 20vRkFCgjsY)"
+		end
+
 		configure :flaitometro, :enum do 
 			enum do
 			    { '*': 1, '**': 2, '***': 3, '****': 4, '*****': 5 }
@@ -72,7 +84,7 @@ class Post < ActiveRecord::Base
 			field :second_text
 			field :image_url do
 				formatted_value do
-					bindings[:view].tag(:img, { :src => bindings[:object].cover_url }) << value
+					bindings[:view].tag(:img, { :src => bindings[:object].image_url }) << value
 				end
 			end
 		end

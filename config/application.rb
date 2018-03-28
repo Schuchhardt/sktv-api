@@ -30,5 +30,10 @@ module SktvApi
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    Raven.configure do |config|
+      config.dsn = 'https://5fba3168a993444db5290cdfb3104fb7:e05cae92eb9247cf96469f0195c2e11c@sentry.io/707167'
+    end
+
   end
 end

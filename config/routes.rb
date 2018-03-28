@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     get 'agents/:agent_type/:agent_id' => '/agents#detail'
     get 'skateparks-list/:region_id' => '/skateparks#list'
     get 'skateparks/:skatepark_id' => '/skateparks#detail'
-    
+    get 'search' => '/welcome#search'
     
   end
 

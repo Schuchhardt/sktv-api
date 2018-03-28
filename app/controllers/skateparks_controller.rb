@@ -7,6 +7,6 @@ class SkateparksController < ApplicationController
 
 	def detail
 		skatepark = Spot.find params[:skatepark_id]
-		render json: {skatepark: skatepark.slice(:id, :name, :commment, :city, :image_url, :location, :address, :city, :photos, :map_url, :region) }
+		render json: {skatepark: skatepark.slice(:id, :name, :commment, :city, :image_url, :location, :address, :city, :photos, :map_url, :region, :flaitometro) }
 	end
 end

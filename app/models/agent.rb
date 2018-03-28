@@ -1,5 +1,16 @@
 class Agent < ActiveRecord::Base
+	include PgSearch
 	has_many :photos, :inverse_of => :agent, dependent: :delete_all
+
+	multisearchable against: %i(name agent_type text quote)
+
+	def title
+		self.name
+	end
+
+	def img
+		self.photo_url
+	end
 
 	# RAILS ADMIN
 	rails_admin do

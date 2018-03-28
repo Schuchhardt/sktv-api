@@ -1,10 +1,20 @@
 require "google/cloud/storage"
 
 class Event < ActiveRecord::Base
+	include PgSearch
 	has_many :photos, :inverse_of => :event, dependent: :delete_all
 	after_create :load_photos
+	multisearchable against: %i(name description place)
 
 	BASE_URL = "https://storage.googleapis.com/sktv/"
+
+	def title
+		self.name
+	end
+
+	def img
+		self.image_url
+	end
 
 	def cover_url
 		gen_gcloud_url self.code_name, self.image_url

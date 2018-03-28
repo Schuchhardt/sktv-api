@@ -75,3 +75,5 @@ gem "sentry-raven"
 gem 'google-cloud-storage'
 
 gem 'instagram_api_client'
+
+gem 'pg_search'

@@ -5,7 +5,7 @@ class AgentsController < ApplicationController
 	end
 
 	def list_type
-		all_agents = Agent.where(agent_type: params[:agent_type]).order(created_at: 'DESC')
+		all_agents = Agent.where(agent_type: params[:agent_type][0..-2]).order(created_at: 'DESC')
 		render json: {agents: all_agents}		
 	end
 
