@@ -49,8 +49,9 @@ class Post < ActiveRecord::Base
 			label "Lugar"
 		end
 
-		configure :release_date do
+		configure :release_date, :date do
 			label "Fecha"
+			strftime_format "%d-%m-%Y"
 		end
 
 		configure :image_url do
