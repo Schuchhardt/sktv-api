@@ -11,6 +11,6 @@ class AgentsController < ApplicationController
 
 	def detail
 		agent = Agent.find params[:agent_id]
-		render json: {agent: agent.slice(:id, :name, :age, :phone, :email, :instagram, :facebook, :youtube, :featured_image, :text, :aditional_text, :photo_url, :quote, :agent_type, :photos)}		
+		render json: {agent: agent.slice(:id, :name, :age, :phone, :email, :instagram, :facebook, :youtube, :featured_image, :text, :aditional_text, :photo_url, :quote, :agent_type, :photos, :youtube_iframe_url)}		
 	end
 end

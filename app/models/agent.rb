@@ -12,6 +12,10 @@ class Agent < ActiveRecord::Base
 		self.photo_url
 	end
 
+	def youtube_iframe_url
+		self.youtube_id.present? ? "https://www.youtube.com/embed/#{self.youtube_id}?rel=0" : false
+	end
+
 	# RAILS ADMIN
 	rails_admin do
 		weight 4
@@ -50,6 +54,11 @@ class Agent < ActiveRecord::Base
 
 		configure :featured_image do
 			label "Imagen Destacada"
+		end
+
+		configure :youtube_id do
+			label "ID youtube"
+			help "Poner SOLO el id - (ej: si es https://youtu.be/20vRkFCgjsY poner solo 20vRkFCgjsY)"
 		end
 
 		configure :agent_type, :enum do 
