@@ -8,7 +8,7 @@ class EventController < ApplicationController
 
 	def detail
 		event = Event.find params[:event_id]
-		render json: {event: event.slice(:id, :name, :description, :place, :release_date, :cover_url, :all_photos ) }
+		render json: {event: event.slice(:id, :name, :description, :featured_image, :text, :place, :release_date, :cover_url, :all_photos ) }
 	end
 
 	def photos

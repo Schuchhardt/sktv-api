@@ -66,6 +66,10 @@ class Event < ActiveRecord::Base
 			label "Descripcion"
 		end
 
+		configure :text do
+			label "Texto adicional"
+		end
+
 		configure :place do
 			label "Lugar"
 		end
@@ -90,6 +94,10 @@ class Event < ActiveRecord::Base
 		configure :image_url do
 			label "Foto Portada"
 			help "Nombre archivo foto"
+		end
+
+		configure :featured_image do
+			label "Texto imagen destacada"
 		end
 		
 		list do
