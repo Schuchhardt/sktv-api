@@ -39,6 +39,9 @@ class Post < ActiveRecord::Base
 
 		configure :text, :text do
 			label "Texto"
+			help '<a href="http://google.cl">LINK</a>
+					<b>Negrita</b>
+					<i>Cursiva</i>'
 		end
 
 		configure :second_text, :text do 

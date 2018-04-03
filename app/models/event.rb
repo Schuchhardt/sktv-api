@@ -66,8 +66,11 @@ class Event < ActiveRecord::Base
 			label "Descripcion"
 		end
 
-		configure :text do
+		configure :text, :text do
 			label "Texto adicional"
+			help '<a href="http://google.cl">LINK</a>
+					<b>Negrita</b>
+					<i>Cursiva</i>'
 		end
 
 		configure :place do
