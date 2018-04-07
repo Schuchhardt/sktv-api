@@ -12,28 +12,14 @@ class PostsController < ApplicationController
 							.map { |e| e.slice(:id, :title, :subtitle, :image_url, :created_at) }
 		begin
 			instagram_feed = InstagramApi.user(ENV['INSTAGRAM_USER_ID']).recent_media.data.first.link.gsub('https://www.instagram.com/p/', '')
+			# req = HTTParty.get("https://api.instagram.com/v1/users/self/media/recent/?access_token=#{ENV['INSTAGRAM_ACCESS_TOKEN']}")
+			# instagram_feed = JSON.parse(req.body)['data'].first['link'].gsub('https://www.instagram.com/p/', '')
 		rescue Exception => e
 			puts e.inspect
 			puts e.backtrace
 			instagram_feed = false
 		end
 		render json: {recent_news: filtered_news, featured: featured, instagram_feed: instagram_feed }
-	end
-
-	def feed
-		instagram_feed = []
-		InstagramApi.user(ENV['INSTAGRAM_USER_ID']).recent_media.data.each_with_index do |recent_media, index|
-			next if index > 17
-			instagram_feed << {
-				link: recent_media.link,
-				caption: recent_media.caption.text,
-				image: recent_media.images.standard_resolution.url,
-				likes: recent_media.likes["count"],
-				comments: recent_media.comments["count"],
-				type: recent_media.type
-			}	
-		end
-		render json: {instagram_feed: instagram_feed }
 	end
 
 	def detail

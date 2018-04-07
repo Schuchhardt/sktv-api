@@ -25,7 +25,8 @@ Rails.application.routes.draw do
     get 'skateparks-list/:region_id' => '/skateparks#list'
     get 'skateparks/:skatepark_id' => '/skateparks#detail'
     get 'search' => '/welcome#search'
-    
+    get 'banners' => '/welcome#banners'
+    post 'subscribe' => '/welcome#subscribe'
   end
 
   # Example of named route that can be invoked with purchase_url(id: product.id)

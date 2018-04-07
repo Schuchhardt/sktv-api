@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180330141515) do
+ActiveRecord::Schema.define(version: 20180407020904) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,13 @@ ActiveRecord::Schema.define(version: 20180330141515) do
     t.string   "agent_type"
     t.string   "aditional_text"
     t.string   "youtube_id"
+  end
+
+  create_table "banners", force: :cascade do |t|
+    t.string  "image_url"
+    t.string  "name"
+    t.string  "link"
+    t.boolean "active",    default: true
   end
 
   create_table "events", force: :cascade do |t|
@@ -113,6 +120,12 @@ ActiveRecord::Schema.define(version: 20180330141515) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "flaitometro"
+  end
+
+  create_table "subscribers", force: :cascade do |t|
+    t.string   "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

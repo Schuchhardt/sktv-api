@@ -1,10 +1,6 @@
 class WelcomeController < ApplicationController
 	respond_to :json
 
-	def index
-		
-	end
-
 	def search
 		result = PgSearch.multisearch(params[:q])
 		parsed_types = {
@@ -34,6 +30,16 @@ class WelcomeController < ApplicationController
 		end
 		puts parsed_result.inspect
 		render json: {result: parsed_result}
+	end
+
+	def banners
+		banners = Banner.where(active: true)
+		render json: {banners: banners}
+	end
+
+	def subscribe
+		s = Subscriber.create email: params[:email]
+		render json: {subscriber: s}
 	end
 
 end
