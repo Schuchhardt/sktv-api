@@ -11,9 +11,9 @@ class PostsController < ApplicationController
 		filtered_news = Post.where("featured IS NOT true").order(release_date: 'DESC').limit(9)
 							.map { |e| e.slice(:id, :title, :subtitle, :image_url, :created_at) }
 		begin
-			instagram_feed = InstagramApi.user(ENV['INSTAGRAM_USER_ID']).recent_media.data.first.link.gsub('https://www.instagram.com/p/', '')
-			# req = HTTParty.get("https://api.instagram.com/v1/users/self/media/recent/?access_token=#{ENV['INSTAGRAM_ACCESS_TOKEN']}")
-			# instagram_feed = JSON.parse(req.body)['data'].first['link'].gsub('https://www.instagram.com/p/', '')
+			#instagram_feed = InstagramApi.user(ENV['INSTAGRAM_USER_ID']).recent_media.data.first.link.gsub('https://www.instagram.com/p/', '')
+			req = HTTParty.get("https://api.instagram.com/v1/users/self/media/recent/?access_token=#{ENV['INSTAGRAM_ACCESS_TOKEN']}")
+			instagram_feed = JSON.parse(req.body)['data'].first['link'].gsub('https://www.instagram.com/p/', '')
 		rescue Exception => e
 			puts e.inspect
 			puts e.backtrace
