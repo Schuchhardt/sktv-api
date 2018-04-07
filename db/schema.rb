@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180407020904) do
+ActiveRecord::Schema.define(version: 20180407145927) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -117,9 +117,13 @@ ActiveRecord::Schema.define(version: 20180407020904) do
     t.string   "region"
     t.string   "address"
     t.string   "commment"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.integer  "flaitometro"
+    t.string   "aditional_text"
+    t.string   "flaitometro_text"
+    t.string   "youtube_url"
+    t.string   "caption"
   end
 
   create_table "subscribers", force: :cascade do |t|

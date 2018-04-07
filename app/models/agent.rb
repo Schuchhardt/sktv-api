@@ -46,10 +46,16 @@ class Agent < ActiveRecord::Base
 
 		configure :text, :text do
 			label "Texto"
+			help '<a href="http://google.cl" target="_blank">LINK</a>
+					<b>Negrita</b>
+					<i>Cursiva</i>'
 		end
 
 		configure :aditional_text, :text do
 			label "Texto adicional"
+			help '<a href="http://google.cl" target="_blank">LINK</a>
+					<b>Negrita</b>
+					<i>Cursiva</i>'
 		end
 
 		configure :featured_image do

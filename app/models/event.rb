@@ -21,7 +21,7 @@ class Event < ActiveRecord::Base
 	end
 
 	def all_photos
-		self.photos.order(:order).limit(12).map { |p| p.slice(:id, :photo_url) }
+		self.photos.order(:order).limit(20).map { |p| p.slice(:id, :photo_url) }
 	end
 
 	private
@@ -62,7 +62,7 @@ class Event < ActiveRecord::Base
 			required true
 		end
 
-		configure :description do
+		configure :description, :text do
 			label "Descripcion"
 		end
 

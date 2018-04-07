@@ -11,6 +11,10 @@ class Spot < ActiveRecord::Base
 		self.image_url
 	end
 
+	def youtube_iframe_url
+		self.youtube_url.present? ? "https://www.youtube.com/embed/#{self.youtube_url}?rel=0" : false
+	end
+
 	# RAILS ADMIN
 	rails_admin do
 		weight 5
@@ -37,8 +41,31 @@ class Spot < ActiveRecord::Base
 			label "Ciudad"
 		end
 
-		configure :commment do
+		configure :caption do
+			label "label foto"
+		end
+
+		configure :flaitometro_text do
+			label "Texto de flaitometro"
+		end
+
+		configure :youtube_url do
+			label "ID youtube"
+			help "Poner SOLO el id - (ej: si es https://youtu.be/20vRkFCgjsY poner solo 20vRkFCgjsY)"
+		end
+
+		configure :aditional_text, :text do
+			label "Texto adicional"
+			help '<a href="http://google.cl" target="_blank">LINK</a>
+					<b>Negrita</b>
+					<i>Cursiva</i>'
+		end
+
+		configure :commment, :text do
 			label "Comentario"
+			help '<a href="http://google.cl" target="_blank">LINK</a>
+					<b>Negrita</b>
+					<i>Cursiva</i>'
 		end
 
 		configure :address do
