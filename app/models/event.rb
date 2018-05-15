@@ -41,7 +41,7 @@ class Event < ActiveRecord::Base
 		
 			event_files.all.each do |file|
 				file.acl.public!
-				Photo.create(photo_url: "#{BASE_URL}#{file.name}", event_id: self.id, filename: file.name, order: file.name.gsub(/\D/, '').to_i)
+				Photo.create(photo_url: "#{BASE_URL}#{file.name}", event_id: self.id, filename: file.name, order: file.name.gsub(/\D/, '')[0..16].to_i)
 			end
 		end
 	end
