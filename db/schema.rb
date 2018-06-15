@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180407145927) do
+ActiveRecord::Schema.define(version: 20180615144355) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20180407145927) do
     t.string  "name"
     t.string  "link"
     t.boolean "active",    default: true
+    t.boolean "is_agency"
   end
 
   create_table "events", force: :cascade do |t|
@@ -106,6 +107,7 @@ ActiveRecord::Schema.define(version: 20180407145927) do
     t.string   "place"
     t.integer  "flaitometro"
     t.string   "youtube_url"
+    t.boolean  "is_cover"
   end
 
   create_table "spots", force: :cascade do |t|

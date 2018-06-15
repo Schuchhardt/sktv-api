@@ -17,6 +17,10 @@ class Post < ActiveRecord::Base
 		weight 1
 		label "Publicación"
 		label_plural "Publicaciones"
+
+		configure :is_cover do
+			label "Portada?"
+		end
 		
 		configure :featured do
 			label "Destacado?"
@@ -80,6 +84,8 @@ class Post < ActiveRecord::Base
 			field :title
 			field :subtitle
 			field :place
+			field :featured
+			field :is_cover
 		end
 
 		show do

@@ -28,13 +28,13 @@ class WelcomeController < ApplicationController
 			end
 			parsed_result << search_result
 		end
-		puts parsed_result.inspect
 		render json: {result: parsed_result}
 	end
 
 	def banners
-		banners = Banner.where(active: true)
-		render json: {banners: banners}
+		banners = Banner.where("is_agency IS NOT true AND active IS true")
+		agency_banner = Banner.where(is_agency: true).last
+		render json: {banners: banners, agency_banner: agency_banner}
 	end
 
 	def subscribe

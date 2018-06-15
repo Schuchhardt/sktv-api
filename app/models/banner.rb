@@ -14,6 +14,11 @@ class Banner < ActiveRecord::Base
 			label "Nombre"
 		end
 
+		configure :is_agency do
+			label "Es de Agencia?"
+			help "Alguna marca que ponga iframe en vez de una imagen"
+		end
+
 		configure :link do
 			label "Link"
 		end
