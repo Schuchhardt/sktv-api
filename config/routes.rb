@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     get 'skateparks/:skatepark_id' => '/skateparks#detail'
     get 'search' => '/welcome#search'
     get 'banners' => '/welcome#banners'
+    get 'about' => '/welcome#about'
     post 'subscribe' => '/welcome#subscribe'
   end
 

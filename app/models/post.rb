@@ -26,6 +26,10 @@ class Post < ActiveRecord::Base
 			label "Destacado?"
 		end
 
+		configure :recommended do
+			label "Recomendado?"
+		end
+
 		configure :title do
 			label "Titulo"
 			required true
@@ -82,10 +86,10 @@ class Post < ActiveRecord::Base
 		
 		list do
 			field :title
-			field :subtitle
 			field :place
 			field :featured
 			field :is_cover
+			field :recommended
 		end
 
 		show do

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180712154311) do
+ActiveRecord::Schema.define(version: 20180712174157) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -114,6 +114,7 @@ ActiveRecord::Schema.define(version: 20180712154311) do
     t.integer  "flaitometro"
     t.string   "youtube_url"
     t.boolean  "is_cover"
+    t.boolean  "recommended"
   end
 
   create_table "spots", force: :cascade do |t|

@@ -1,5 +1,9 @@
+require "google/cloud/storage"
+
 class WelcomeController < ApplicationController
 	respond_to :json
+
+	BASE_URL = "https://storage.googleapis.com/sktv/"
 
 	def search
 		result = PgSearch.multisearch(params[:q])
@@ -40,6 +44,36 @@ class WelcomeController < ApplicationController
 	def subscribe
 		s = Subscriber.create email: params[:email]
 		render json: {subscriber: s}
+	end
+
+	def about
+		photos = about_photos
+		render json: {photos: photos}
+	end
+
+	private
+
+	def about_photos
+			
+		photos = []
+
+		storage = Google::Cloud::Storage.new(
+			project_id: ENV["GCLOUD_PROJECT_ID"],
+			credentials: JSON.parse(ENV["GCLOUD_APPLICATION_CREDENTIALS"])
+		)
+		bucket = storage.bucket ENV["GCLOUD_BUCKET"]
+			
+		about_files = bucket.files prefix: "Nosotros"
+		
+		about_files.all.each do |file|
+			file.acl.public!
+			order = file.name.gsub(/\D/, '')[0..16].to_i
+			if order != 0
+				photos << {photo_url: "#{BASE_URL}#{file.name}", filename: file.name, order: order}	
+			end
+		end
+
+		photos
 	end
 
 end
