@@ -49,14 +49,16 @@ class Post < ActiveRecord::Base
 			label "Texto"
 			help '<a href="http://google.cl" target="_blank">LINK</a>
 					<b>Negrita</b>
-					<i>Cursiva</i>'
+					<i>Cursiva</i>
+					<img src="link_imagen.jpg">'
 		end
 
 		configure :second_text, :text do 
 			label "Texto Auxiliar"
 			help '<a href="http://google.cl" target="_blank">LINK</a>
 					<b>Negrita</b>
-					<i>Cursiva</i>'
+					<i>Cursiva</i>
+					<img src="link_imagen.jpg">'
 		end
 
 		configure :place do

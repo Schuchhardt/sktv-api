@@ -12,7 +12,7 @@ class Photo < ActiveRecord::Base
 
 		configure :photo_url do
 			label "URL imagen"
-			help "nombreEvento/nombreArchivo.jpg"
+			help "nombreEvento/nombreArchivo.jpg o link de imgur.com"
 		end
 
 		configure :caption, :text do
