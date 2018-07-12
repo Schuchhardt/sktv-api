@@ -20,7 +20,7 @@ class Photo < ActiveRecord::Base
 		end
 
 		configure :order do
-			hide
+			label "Orden"
 		end
 
 		configure :filename do

@@ -13,7 +13,7 @@ class EventController < ApplicationController
 
 	def photos
 		event = Event.find params[:event_id]
-		per_page = 12
+		per_page = 20
 		if params[:page].present?
 			page = params[:page].to_i || 1
 			offset = (page * per_page) - per_page
